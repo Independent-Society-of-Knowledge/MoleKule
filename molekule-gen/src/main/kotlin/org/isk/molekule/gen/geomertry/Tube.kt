@@ -1,6 +1,7 @@
 package org.isk.molekule.gen.geomertry
 
 import kotlin.math.PI
+import kotlin.math.abs
 
 class Tube(
     val beginMiddle: Point,
@@ -9,15 +10,21 @@ class Tube(
 ) : ClosedSurface {
     val middleLine = Line(beginMiddle to endMiddle)
 
-    private val beginToEnd = endMiddle - beginMiddle
-    private val endToBegin = -1 * beginToEnd
-    override fun isInside(point: Point): Boolean =
-        middleLine.distance(point) < radius &&
-                (beginToEnd.angle(point) < PI / 2.0) &&
-                (endToBegin.angle(point) < PI / 2.0)
+    val length = (endMiddle - beginMiddle).norm
+    val beginToEndDirection = (endMiddle - beginMiddle).normalize()
+    val endToBeginDirection = (endMiddle - beginMiddle).normalize()
+    override fun contains(point: Point): Boolean {
+        val projectionAlongMiddleLine = beginToEndDirection dot (point - beginMiddle)
+        return middleLine.distance(point) < radius &&
+                projectionAlongMiddleLine < length &&
+                projectionAlongMiddleLine > 0
+    }
 
-    override fun isOutSide(point: Point): Boolean =
-        middleLine.distance(point) > radius ||
-                (beginToEnd.angle(point) > PI / 2.0) ||
-                (endToBegin.angle(point) > PI / 2.0)
+
+    override fun excludes(point: Point): Boolean {
+        val projectionAlongMiddleLine = beginToEndDirection dot (point - beginMiddle)
+        return middleLine.distance(point) > radius ||
+                projectionAlongMiddleLine > length ||
+                projectionAlongMiddleLine < 0
+    }
 }

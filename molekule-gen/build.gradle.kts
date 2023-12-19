@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.apache.commons:commons-lang3:3.14.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.6.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }

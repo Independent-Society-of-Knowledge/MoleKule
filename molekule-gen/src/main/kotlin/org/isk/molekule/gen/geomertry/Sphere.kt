@@ -5,10 +5,10 @@ data class Sphere(
     val radius: Double
 ) : ClosedSurface {
 
-    override fun isInside(point: Point): Boolean =
+    override fun contains(point: Point): Boolean =
         point.distance(middle) < radius
 
-    override fun isOutSide(point: Point): Boolean =
+    override fun excludes(point: Point): Boolean =
         point.distance(middle) > radius
 
 }

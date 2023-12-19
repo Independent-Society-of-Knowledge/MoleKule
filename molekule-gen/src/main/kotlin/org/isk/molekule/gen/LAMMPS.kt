@@ -22,7 +22,7 @@ enum class AtomStyle {
 fun Environment.toLammpsInputFile(
     filePath: String,
     atomStyle: AtomStyle = AtomStyle.ATOMIC,
-    enclosingBoxOffset: Double = 0.01
+    enclosingBoxOffset: Double = 0.0
 ) {
 
     val labeledAtoms = this.atoms.mapIndexed { index, atom -> atom to index + 1 }.toMap()
@@ -114,5 +114,32 @@ fun Environment.toLammpsInputFile(
             oups + "$index ${dihedral.type} ${dihedral.subAtoms.map { labeledAtoms[it]!! }.joinToString(" ")}"
         }
 
+    }
+}
+
+
+fun Environment.toLammpsDumpFile(
+    filePath: String,
+    timeStamps: Long = 0,
+    bounds: String = "pp pp pp",
+    enclosingBoxOffset: Double = 0.0
+) {
+    val labeledAtoms = this.atoms.mapIndexed { index, atom -> atom to index + 1 }.toMap()
+    val box = enclosingBox(enclosingBoxOffset)
+    FileOutputStream(File(filePath)).use { oups ->
+
+        oups + """
+        ITEM: TIMESTEP
+        $timeStamps
+        ITEM: NUMBER OF ATOMS
+        ${labeledAtoms.size}
+        ITEM: BOX BOUNDS $bounds
+        ${box.xLow} ${box.xHigh}
+        ${box.yLow} ${box.yHigh}
+        ${box.zLow} ${box.zHigh}
+        ITEM: ATOMS id type xs ys zs""".trimIndent()
+        labeledAtoms.forEach { (atom, index) ->
+            oups + "$index ${atom.type} ${atom.position.x} ${atom.position.y} ${atom.position.z}"
+        }
     }
 }

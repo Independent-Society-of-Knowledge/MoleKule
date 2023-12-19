@@ -20,13 +20,13 @@ data class Box(
     )
 
     init {
-        if (xBoundary.first >= xBoundary.second)
+        if (xBoundary.first > xBoundary.second)
             throw IllegalArgumentException("x boundary is not valid: $xBoundary should from low to high and not equal")
 
-        if (yBoundary.first >= yBoundary.second)
+        if (yBoundary.first > yBoundary.second)
             throw IllegalArgumentException("y boundary is not valid: $yBoundary should from low to high and not equal")
 
-        if (zBoundary.first >= zBoundary.second)
+        if (zBoundary.first > zBoundary.second)
             throw IllegalArgumentException("z boundary is not valid: $zBoundary should from low to high and not equal")
     }
 
@@ -47,12 +47,12 @@ data class Box(
     val zHigh
         get() = zBoundary.second
 
-    override fun isInside(point: Point): Boolean =
+    override fun contains(point: Point): Boolean =
         with(point) {
             x between xBoundary && y between yBoundary && z between zBoundary
         }
 
-    override fun isOutSide(point: Point): Boolean =
+    override fun excludes(point: Point): Boolean =
         with(point) {
             x outside xBoundary || y outside yBoundary || z outside zBoundary
         }

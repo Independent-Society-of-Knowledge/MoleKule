@@ -14,17 +14,17 @@ class BoxTest {
         val p2 = Point(1.5, 0.5, 0.5)
         val p3 = Point(1.0, 0.5, 0.5)
 
-        box.isInside(p1) shouldBeEqual true
-        box.isInside(p2) shouldBeEqual false
-        box.isInside(p3) shouldBeEqual false
+        box.contains(p1) shouldBeEqual true
+        box.contains(p2) shouldBeEqual false
+        box.contains(p3) shouldBeEqual false
 
-        box.isOutSide(p1) shouldBeEqual false
-        box.isOutSide(p2) shouldBeEqual true
-        box.isOutSide(p3) shouldBeEqual false
+        box.excludes(p1) shouldBeEqual false
+        box.excludes(p2) shouldBeEqual true
+        box.excludes(p3) shouldBeEqual false
 
-        box.isOnSurface(p1) shouldBeEqual false
-        box.isOnSurface(p2) shouldBeEqual false
-        box.isOnSurface(p3) shouldBeEqual true
+        box.touches(p1) shouldBeEqual false
+        box.touches(p2) shouldBeEqual false
+        box.touches(p3) shouldBeEqual true
 
     }
 }
