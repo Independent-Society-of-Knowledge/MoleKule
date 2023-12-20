@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.21"
+    id("maven-publish")
 }
 
 group = "org.isk"
@@ -20,4 +21,13 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(17)
+}
+
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
 }

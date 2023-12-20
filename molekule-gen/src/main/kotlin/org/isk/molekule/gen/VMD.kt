@@ -59,6 +59,9 @@ class VMD {
         return this
 
     }
+    fun vdm(size: Double = 1.0){
+        addCommand("mol representation VDW $size 15.000000")
+    }
 
     fun waitUntilExit() {
         instance?.waitFor()
