@@ -4,9 +4,7 @@ import kotlin.math.PI
 import kotlin.math.abs
 
 class Tube(
-    val beginMiddle: Point,
-    val endMiddle: Point,
-    val radius: Double
+    val beginMiddle: Point, val endMiddle: Point, val radius: Number
 ) : ClosedSurface {
     val middleLine = Line(beginMiddle to endMiddle)
 
@@ -15,16 +13,12 @@ class Tube(
     val endToBeginDirection = (endMiddle - beginMiddle).normalize()
     override fun contains(point: Point): Boolean {
         val projectionAlongMiddleLine = beginToEndDirection dot (point - beginMiddle)
-        return middleLine.distance(point) < radius &&
-                projectionAlongMiddleLine < length &&
-                projectionAlongMiddleLine > 0
+        return middleLine.distance(point) < radius.toDouble() && projectionAlongMiddleLine < length && projectionAlongMiddleLine > 0
     }
 
 
     override fun excludes(point: Point): Boolean {
         val projectionAlongMiddleLine = beginToEndDirection dot (point - beginMiddle)
-        return middleLine.distance(point) > radius ||
-                projectionAlongMiddleLine > length ||
-                projectionAlongMiddleLine < 0
+        return middleLine.distance(point) > radius.toDouble() || projectionAlongMiddleLine > length || projectionAlongMiddleLine < 0
     }
 }
