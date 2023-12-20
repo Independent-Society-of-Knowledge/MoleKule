@@ -13,7 +13,25 @@ An objective toolkit to generate initial configurations in Molecular Dynamics
 * requires shallow knowledge of a programming language - in this case kotlin
 
 ### how can i use this?
-after the first release this page will be updated
+
+add jitpack to your repositories:
+```kotlin
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
+}
+```
+
+add molekule-gen to your classpath
+
+```kotlin
+dependencies {
+    implementation("com.github.Independent-Society-of-Knowledge:molekule:VERSION")
+}
+```
+to include latest version use `-SNAPSHOT` 
+
+[![](https://jitpack.io/v/Independent-Society-of-Knowledge/molekule.svg)](https://jitpack.io/#Independent-Society-of-Knowledge/molekule)
 
 ### Here is a glimpse 
 
