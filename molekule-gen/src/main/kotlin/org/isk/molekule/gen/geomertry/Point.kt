@@ -4,7 +4,7 @@ import kotlin.math.*
 import kotlin.random.Random
 
 data class Point(
-    val x: Double, val y: Double, val z: Double
+    var x: Double, var y: Double, var z: Double
 ) : Distanceable {
 
     constructor(x: Number, y: Number, z: Number) : this(x.toDouble(), y.toDouble(), z.toDouble())

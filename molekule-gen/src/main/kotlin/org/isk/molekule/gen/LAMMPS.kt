@@ -10,7 +10,7 @@ private fun OutputStream.writeLine(string: String): OutputStream =
         it.write("$string\n".encodeToByteArray())
     }
 
-private operator fun OutputStream.plus(string: String) = writeLine(string)
+operator fun OutputStream.plus(string: String) = writeLine(string)
 
 
 enum class AtomStyle {
@@ -25,11 +25,11 @@ fun Environment.toLammpsInputFile(
     enclosingBoxOffset: Double = 0.0
 ) {
 
-    val labeledAtoms = this.atoms.mapIndexed { index, atom -> atom to index + 1 }.toMap()
-    val labeledBonds = this.bond.mapIndexed { index, atom -> atom to index + 1 }.toMap()
-    val labeledAngles = this.angles.mapIndexed { index, atom -> atom to index + 1 }.toMap()
-    val labeledDihedral = this.dihedral.mapIndexed { index, atom -> atom to index + 1 }.toMap()
-    val labeledMolecule = this.molecules.mapIndexed { index, atom -> atom to index + 1 }.toMap()
+    val labeledAtoms = this.atoms.toList().mapIndexed { index, atom -> atom to index + 1 }.toMap()
+    val labeledBonds = this.bond.toList().mapIndexed { index, atom -> atom to index + 1 }.toMap()
+    val labeledAngles = this.angles.toList().mapIndexed { index, atom -> atom to index + 1 }.toMap()
+    val labeledDihedral = this.dihedral.toList().mapIndexed { index, atom -> atom to index + 1 }.toMap()
+    val labeledMolecule = this.molecules.toList().mapIndexed { index, atom -> atom to index + 1 }.toMap()
 
     FileOutputStream(File(filePath)).use { oups ->
 
@@ -64,6 +64,7 @@ fun Environment.toLammpsInputFile(
         when (atomStyle) {
             AtomStyle.ATOMIC -> {
                 labeledAtoms
+                    .entries.sortedBy { it.value }
                     .forEach { (atom, index) ->
                         oups + "$index ${atom.type} ${atom.position.x} ${atom.position.y} ${atom.position.z}"
                     }
@@ -73,6 +74,7 @@ fun Environment.toLammpsInputFile(
                 labeledMolecule
                     .forEach { (molecule, moleculeIndex) ->
                         molecule.atoms.map { it to labeledAtoms[it] }
+                            .sortedBy { it.second }
                             .forEach { (atom, atomIndex) ->
                                 oups + "$atomIndex $moleculeIndex ${atom.type} ${atom.position.x} ${atom.position.y} ${atom.position.z}"
                             }
@@ -85,6 +87,7 @@ fun Environment.toLammpsInputFile(
                         molecule.atoms
                             .map { if (it is ChargedAtom) it else ChargedAtom(it.position, it.mass, 0.0, it.type) }
                             .map { it to labeledAtoms[it] }
+                            .sortedBy { it.second }
                             .forEach { (chargedAtom, atomIndex) ->
                                 oups + "$atomIndex $moleculeIndex ${chargedAtom.type} ${chargedAtom.charge} ${chargedAtom.position.x} ${chargedAtom.position.y} ${chargedAtom.position.z}"
                             }
@@ -95,14 +98,14 @@ fun Environment.toLammpsInputFile(
         oups + ""
         oups + "Bonds"
         oups + ""
-        labeledBonds.forEach { (bond, index) ->
+        labeledBonds.entries.sortedBy { it.value }.forEach { (bond, index) ->
             oups + "$index ${bond.type} ${labeledAtoms[bond.first]!!} ${labeledAtoms[bond.second]!!}"
         }
 
         oups + ""
         oups + "Angles"
         oups + ""
-        labeledAngles.forEach { (angle, index) ->
+        labeledAngles.entries.sortedBy { it.value }.forEach { (angle, index) ->
             oups + "$index ${angle.type} ${labeledAtoms[angle.first]!!} ${labeledAtoms[angle.second]!!} ${labeledAtoms[angle.third]!!}"
         }
 
@@ -110,7 +113,7 @@ fun Environment.toLammpsInputFile(
         oups + ""
         oups + "Dihedrals"
         oups + ""
-        labeledDihedral.forEach { (dihedral, index) ->
+        labeledDihedral.entries.sortedBy { it.value }.forEach { (dihedral, index) ->
             oups + "$index ${dihedral.type} ${dihedral.subAtoms.map { labeledAtoms[it]!! }.joinToString(" ")}"
         }
 
