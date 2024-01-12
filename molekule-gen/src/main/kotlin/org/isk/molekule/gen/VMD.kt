@@ -1,6 +1,7 @@
 package org.isk.molekule.gen
 
 import org.apache.commons.lang3.SystemUtils
+import org.isk.molekule.gen.lammps.toLammpsDumpFile
 import java.io.File
 import java.io.FileOutputStream
 
@@ -59,8 +60,9 @@ class VMD {
         return this
 
     }
-    fun vdm(size: Double = 1.0){
-        addCommand("mol representation VDW $size 15.000000")
+    fun vdm(size: Double = 1.0): VMD {
+        addCommand("mol modstyle 0 0 VDW $size 15.000000")
+        return this
     }
 
     fun waitUntilExit() {
@@ -69,10 +71,10 @@ class VMD {
     }
 }
 
-fun Environment.createVMD(): VMD {
+fun Environment.createVMD(rescale: Double = 0.1): VMD {
     return VMD().also {
         val outputFile = File.createTempFile("molkul-", ".lammpstrj")
-        toLammpsDumpFile(outputFile.path)
+        toLammpsDumpFile(outputFile.path, rescale = rescale)
         it.setPreCommand(outputFile.path)
         it.addCommand("mol color Type")
         it.addCommand("mol representation VDW 0.700000 15.000000")

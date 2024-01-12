@@ -13,6 +13,8 @@ repositories {
 
 dependencies {
     implementation("org.apache.commons:commons-lang3:3.14.0")
+    implementation("org.apache.velocity:velocity-engine-core:2.3")
+    implementation("org.slf4j:slf4j-simple:2.0.9")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.6.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }

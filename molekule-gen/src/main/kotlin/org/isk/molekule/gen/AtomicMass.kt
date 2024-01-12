@@ -113,5 +113,7 @@ enum class AtomicMass(val mass: Double, val fullName: String) {
     Uun(269.0, "Ununnilium"),
     Uuu(272.0, "Unununium"),
     Uub(277.0, "Ununbium"),
-    Uuq(284.0, "Ununquadium")
+    Uuq(284.0, "Ununquadium");
+
+    val atomType = ordinal + 1
 }

@@ -1,6 +1,10 @@
 package org.isk.molekule.gen
 
 import org.isk.molekule.gen.atom.*
+import org.isk.molekule.gen.atom.coefficient.AngleCoefficient
+import org.isk.molekule.gen.atom.coefficient.BondCoefficient
+import org.isk.molekule.gen.atom.coefficient.Coefficient
+import org.isk.molekule.gen.atom.coefficient.DihedralCoefficient
 import org.isk.molekule.gen.geomertry.Box
 import java.util.LinkedHashSet
 
@@ -24,42 +28,57 @@ class Environment {
     val molecules: List<Molecule>
         get() = entities.filterIsInstance<Molecule>()
 
+    val coefficients: List<Coefficient>
+        get() = entities.filterIsInstance<Coefficient>()
+
+
+    val bondCoefficients: List<BondCoefficient>
+        get() = entities.filterIsInstance<BondCoefficient>()
+    val angleCoefficients: List<AngleCoefficient>
+        get() = entities.filterIsInstance<AngleCoefficient>()
+    val dihedralCoefficients: List<DihedralCoefficient>
+        get() = entities.filterIsInstance<DihedralCoefficient>()
+
+    var boundingBox: Box? = null
     val enclosingBox: Box
         get() {
-            val atoms = this.atoms
-            if (atoms.isEmpty())
-                throw IllegalStateException("no atoms are inserted in the environment - can't enclose a box on an empty environment")
+            return boundingBox ?: run {
+
+                val atoms = this.atoms
+                if (atoms.isEmpty())
+                    throw IllegalStateException("no atoms are inserted in the environment - can't enclose a box on an empty environment")
 
 
-            var xLow: Double = atoms.first().position.x
-            var xHigh: Double = xLow
+                var xLow: Double = atoms.first().position.x
+                var xHigh: Double = xLow
 
-            var yLow: Double = atoms.first().position.y
-            var yHigh: Double = yLow
+                var yLow: Double = atoms.first().position.y
+                var yHigh: Double = yLow
 
-            var zLow: Double = atoms.first().position.z
-            var zHigh: Double = zLow
+                var zLow: Double = atoms.first().position.z
+                var zHigh: Double = zLow
 
-            atoms.forEach {
-                with(it.position) {
-                    if (x > xHigh)
-                        xHigh = x
-                    if (x < xLow)
-                        xLow = x
+                atoms.forEach {
+                    with(it.position) {
+                        if (x > xHigh)
+                            xHigh = x
+                        if (x < xLow)
+                            xLow = x
 
-                    if (y > yHigh)
-                        yHigh = y
-                    if (y < yLow)
-                        yLow = y
+                        if (y > yHigh)
+                            yHigh = y
+                        if (y < yLow)
+                            yLow = y
 
-                    if (z > zHigh)
-                        zHigh = z
-                    if (z < zLow)
-                        zLow = z
+                        if (z > zHigh)
+                            zHigh = z
+                        if (z < zLow)
+                            zLow = z
+                    }
                 }
-            }
 
-            return Box(xLow, xHigh, yLow, yHigh, zLow, zHigh)
+                return Box(xLow, xHigh, yLow, yHigh, zLow, zHigh)
+            }
         }
 
     fun add(vararg entityGenerator: EntityGenerator) {

@@ -3,9 +3,9 @@ package org.isk.molekule.gen.lattice
 import org.isk.molekule.gen.geomertry.Point
 
 open class Grid3D(
-    val width: Long,
-    val height: Long,
-    val depth: Long,
+    val width: Int,
+    val height: Int,
+    val depth: Int,
 ) : Lattice {
     override val points: Sequence<Point>
         get() = sequence {
