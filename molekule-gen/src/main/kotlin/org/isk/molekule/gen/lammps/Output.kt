@@ -184,9 +184,9 @@ fun Environment.toLammpsDumpFile(
         ITEM: NUMBER OF ATOMS
         ${labeledAtoms.size}
         ITEM: BOX BOUNDS $bounds
-        ${box.xLow} ${box.xHigh}
-        ${box.yLow} ${box.yHigh}
-        ${box.zLow} ${box.zHigh}
+        ${box.xLow * rescale} ${box.xHigh * rescale}
+        ${box.yLow * rescale} ${box.yHigh * rescale}
+        ${box.zLow * rescale} ${box.zHigh * rescale}
         ITEM: ATOMS id type xs ys zs""".trimIndent()
         labeledAtoms.forEach { (atom, index) ->
             oups + "$index ${atom.type} ${atom.position.x * rescale} ${atom.position.y * rescale} ${atom.position.z * rescale}"
