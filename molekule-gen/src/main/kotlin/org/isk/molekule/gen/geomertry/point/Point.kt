@@ -1,5 +1,6 @@
-package org.isk.molekule.gen.geomertry
+package org.isk.molekule.gen.geomertry.point
 
+import org.isk.molekule.gen.geomertry.Distanceable
 import kotlin.math.*
 import kotlin.random.Random
 
@@ -22,7 +23,12 @@ data class Point(
     operator fun minus(other: Point) = Point(x - other.x, y - other.y, z - other.z)
 
     infix fun dot(other: Point): Double = x * other.x + y * other.y + z * other.z
-
+    infix fun cross(other: Point): Point =
+        Point(
+            y * other.z - z * other.y,
+            x * other.z - z * other.x,
+            x * other.y - y * other.x
+        )
 
     /**
      * radians

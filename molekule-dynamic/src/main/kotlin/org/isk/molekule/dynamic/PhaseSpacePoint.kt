@@ -1,6 +1,6 @@
 package org.isk.molekule.dynamic
 
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 
 class PhaseSpacePoint(
     var position: Point,

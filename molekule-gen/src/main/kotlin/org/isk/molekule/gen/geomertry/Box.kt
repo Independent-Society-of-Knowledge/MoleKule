@@ -1,5 +1,6 @@
 package org.isk.molekule.gen.geomertry
 
+import org.isk.molekule.gen.geomertry.point.Point
 import org.isk.molekule.gen.utils.between
 import org.isk.molekule.gen.utils.outside
 

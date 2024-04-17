@@ -1,6 +1,6 @@
 package org.isk.molekule.gen.atom
 
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 
 open class ChargedAtom(position: Point, mass: Double, val charge: Double, type: Int) : Atom(position, mass, type) {
     override fun equals(other: Any?): Boolean {

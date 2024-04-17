@@ -1,7 +1,6 @@
 package org.isk.molekule.gen.geomertry
 
-import kotlin.math.PI
-import kotlin.math.abs
+import org.isk.molekule.gen.geomertry.point.Point
 
 class Tube(
     val beginMiddle: Point, val endMiddle: Point, val radius: Number

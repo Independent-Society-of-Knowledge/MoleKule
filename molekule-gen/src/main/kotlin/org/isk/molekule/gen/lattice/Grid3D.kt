@@ -1,6 +1,6 @@
 package org.isk.molekule.gen.lattice
 
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 
 open class Grid3D(
     val width: Int,

@@ -1,7 +1,7 @@
 package org.isk.molekule.dynamic.force
 
 import org.isk.molekule.dynamic.tracker.PhaseAtom
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 import kotlin.math.pow
 
 class LennardJonesCutOffForce(

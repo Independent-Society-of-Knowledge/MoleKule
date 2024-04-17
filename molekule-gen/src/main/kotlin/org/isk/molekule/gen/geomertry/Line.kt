@@ -1,5 +1,8 @@
 package org.isk.molekule.gen.geomertry
 
+import org.isk.molekule.gen.geomertry.point.Point
+import org.isk.molekule.gen.geomertry.point.times
+
 data class Line(
     val point: Point,
     val vector: Point

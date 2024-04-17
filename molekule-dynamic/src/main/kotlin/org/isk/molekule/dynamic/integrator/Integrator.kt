@@ -1,7 +1,7 @@
 package org.isk.molekule.dynamic.integrator
 
 import org.isk.molekule.dynamic.PhaseSpacePoint
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 
 
 typealias AccelerationEvaluator = (qp: PhaseSpacePoint, time: Double) -> Point

@@ -3,7 +3,7 @@ package org.isk.molekule.dynamic.tracker
 import org.isk.molekule.dynamic.PhaseSpacePoint
 import org.isk.molekule.gen.atom.Atom
 import org.isk.molekule.gen.atom.Trackable
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 
 
 class NaivePhaseAtom(

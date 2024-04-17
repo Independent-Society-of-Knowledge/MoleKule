@@ -2,7 +2,7 @@ package org.isk.molekule.gen
 
 import io.kotest.matchers.equals.shouldBeEqual
 import org.isk.molekule.gen.geomertry.Box
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 import org.junit.jupiter.api.Test
 
 class BoxTest {

@@ -1,7 +1,7 @@
 package org.isk.molekule.gen
 
 import io.kotest.matchers.shouldBe
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 import org.isk.molekule.gen.geomertry.Tube
 import org.junit.jupiter.api.Test
 

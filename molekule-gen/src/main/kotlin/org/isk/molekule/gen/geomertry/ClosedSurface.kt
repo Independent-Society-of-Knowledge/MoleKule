@@ -1,5 +1,7 @@
 package org.isk.molekule.gen.geomertry
 
+import org.isk.molekule.gen.geomertry.point.Point
+
 interface ClosedSurface {
     fun contains(point: Point): Boolean
     fun excludes(point: Point): Boolean

@@ -1,7 +1,7 @@
 package org.isk.molekule.gen
 
 import io.kotest.matchers.shouldBe
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 import org.isk.molekule.gen.geomertry.Sphere
 import org.isk.molekule.gen.geomertry.isInside
 import org.isk.molekule.gen.geomertry.isOutside

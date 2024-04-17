@@ -10,9 +10,7 @@ import org.isk.molekule.dynamic.watcher.BoundaryType
 import org.isk.molekule.dynamic.watcher.Watcher
 import org.isk.molekule.gen.Environment
 import org.isk.molekule.gen.geomertry.Box
-import org.isk.molekule.gen.geomertry.Point
-import org.isk.molekule.gen.utils.length
-import java.util.concurrent.Callable
+import org.isk.molekule.gen.geomertry.point.Point
 import java.util.concurrent.Executors
 import kotlin.math.max
 

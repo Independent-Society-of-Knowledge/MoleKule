@@ -1,6 +1,6 @@
 package org.isk.molekule.gen.atom
 
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 
 open class Atom(val position: Point, val mass: Double, override val type: Int) : Trackable, EntityGenerator {
     override fun generate(): Array<Trackable> = arrayOf(this)

@@ -1,23 +1,18 @@
 package org.isk.molekule.dynamic
 
 import org.isk.molekule.dynamic.force.LennardJonesCutOffForce
-import org.isk.molekule.dynamic.integrator.RK4Integrator
 import org.isk.molekule.dynamic.report.KineticEnergyReporter
 import org.isk.molekule.dynamic.report.PotentialEnergyReporter
 import org.isk.molekule.dynamic.report.ReportGatherer
 import org.isk.molekule.dynamic.report.Reporter
-import org.isk.molekule.dynamic.tracker.NaiveListTracker
-import org.isk.molekule.dynamic.tracker.NeighborListTracker
 import org.isk.molekule.dynamic.watcher.BoundaryCondition
 import org.isk.molekule.dynamic.watcher.BoundaryType.*
 import org.isk.molekule.dynamic.watcher.Dumper
 import org.isk.molekule.dynamic.watcher.TimeAwareWatcher
-import org.isk.molekule.dynamic.watcher.Watcher
 import org.isk.molekule.gen.AtomicMass
 import org.isk.molekule.gen.Environment
 import org.isk.molekule.gen.atom.Atom
-import org.isk.molekule.gen.geomertry.Point
-import java.util.concurrent.Executors
+import org.isk.molekule.gen.geomertry.point.Point
 
 fun main() {
     val env = Environment()

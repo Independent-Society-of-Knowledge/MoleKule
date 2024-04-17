@@ -1,6 +1,6 @@
 package org.isk.molekule.gen.utils
 
-import org.isk.molekule.gen.geomertry.Point
+import org.isk.molekule.gen.geomertry.point.Point
 
 fun Sequence<Point>.removeDuplicates(distanceThreshold: Double = 10e-2): Sequence<Point> =
     this.distinctBy {

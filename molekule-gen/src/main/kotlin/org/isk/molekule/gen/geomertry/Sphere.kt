@@ -1,5 +1,7 @@
 package org.isk.molekule.gen.geomertry
 
+import org.isk.molekule.gen.geomertry.point.Point
+
 data class Sphere(
     val middle: Point,
     val radius: Number
