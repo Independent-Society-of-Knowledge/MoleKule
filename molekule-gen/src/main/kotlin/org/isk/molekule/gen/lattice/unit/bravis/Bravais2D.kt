@@ -29,6 +29,16 @@ object Bravais2D {
     fun orthorhombic(a: Double, b: Double): UnitCell =
         monoclinic(a, b, PI / 2.0)
 
+    /**
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/2d_oc_rectangular.svg/165px-2d_oc_rectangular.svg.png"/>
+     */
+    fun orthorhombicCentered(a: Double, b: Double): UnitCell =
+        VectorBasedUnitCell(
+            Point(a, b, 0) * 0.5,
+            Point(-a, b, 0) * 0.5,
+            Point(0, 0, 0),
+        )
+
 
     /**
      * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/2d_tp.svg/90px-2d_tp.svg.png"/>

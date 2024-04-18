@@ -52,6 +52,22 @@ object Bravais3D {
         PI / 2.0
     )
 
+    /**
+     * beta in rads
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Base-centered_monoclinic.svg/120px-Base-centered_monoclinic.svg.png"/>
+     */
+    fun monoclinicBaseCentered(
+        a: Double,
+        b: Double,
+        c: Double,
+        beta: Double,
+    ): UnitCell =
+        VectorBasedUnitCell(
+            Point(a, b, 0) * 0.5,
+            Point(a, -b, 0) * 0.5,
+            Point(-c, 0, 0).rotateY(beta),
+        )
+
 
     /**
      * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Orthorhombic.svg/80px-Orthorhombic.svg.png"/>
@@ -63,6 +79,45 @@ object Bravais3D {
     ): UnitCell = monoclinic(a, b, c, PI / 2.0)
 
     /**
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Base-centered_orthorhombic.svg/120px-Base-centered_orthorhombic.svg.png"/>
+     */
+    fun orthorhombicBaseCentered(
+        a: Double,
+        b: Double,
+        c: Double,
+    ): UnitCell = monoclinicBaseCentered(a, b, c, PI / 2.0)
+
+    /**
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Base-centered_orthorhombic.svg/120px-Base-centered_orthorhombic.svg.png"/>
+     */
+    fun orthorhombicBodyCentered(
+        a: Double,
+        b: Double,
+        c: Double,
+    ): UnitCell {
+        val middle = Point(-a, -b, c) * 0.5
+        val a1 = Point.origin - middle
+        val a2 = Point(0, 0, c) - middle
+        val a3 = Point(0, -b, c) - middle
+        return VectorBasedUnitCell(a1, a2, a3)
+    }
+
+    /**
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Face-centered_orthorhombic.svg/120px-Face-centered_orthorhombic.svg.png"/>
+     */
+    fun orthorhombicFaceCentered(
+        a: Double,
+        b: Double,
+        c: Double,
+    ): UnitCell =
+        VectorBasedUnitCell(
+            Point(0, b, c) * 0.5,
+            Point(a, 0, c) * 0.5,
+            Point(a, b, 0) * 0.5,
+        )
+
+
+    /**
      * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Tetragonal.svg/80px-Tetragonal.svg.png"/>
      */
     fun tetragonal(
@@ -71,9 +126,27 @@ object Bravais3D {
     ): UnitCell = orthorhombic(a, a, c)
 
     /**
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Body-centered_tetragonal.svg/120px-Body-centered_tetragonal.svg.png"/>
+     */
+    fun tetragonalBodyCentered(
+        a: Double,
+        c: Double
+    ): UnitCell = orthorhombicBodyCentered(a, a, c)
+
+    /**
      * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Cubic.svg/80px-Cubic.svg.png"/>
      */
     fun cubic(a: Double) = tetragonal(a, a)
+
+    /**
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Cubic-body-centered.svg/120px-Cubic-body-centered.svg.png"/>
+     */
+    fun cubicBodyCentered(a: Double) = tetragonalBodyCentered(a, a)
+
+    /**
+     * @see <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Cubic-face-centered.svg/120px-Cubic-face-centered.svg.png"/>
+     */
+    fun cubicFaceCentered(a: Double) = orthorhombicFaceCentered(a, a, a)
 
 
     /**
