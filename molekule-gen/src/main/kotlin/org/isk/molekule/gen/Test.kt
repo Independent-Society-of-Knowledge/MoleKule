@@ -2,29 +2,29 @@ package org.isk.molekule.gen
 
 import org.isk.molekule.gen.compounds.atomOf
 import org.isk.molekule.gen.geomertry.Box
-import org.isk.molekule.gen.geomertry.point.Point
-import org.isk.molekule.gen.geomertry.Sphere
+import org.isk.molekule.gen.geomertry.Tube
 import org.isk.molekule.gen.geomertry.isInside
+import org.isk.molekule.gen.geomertry.point.Point
+import org.isk.molekule.gen.lattice.Grid2D
 import org.isk.molekule.gen.lattice.Grid3D
+import org.isk.molekule.gen.lattice.crystal.Crystal
+import org.isk.molekule.gen.lattice.crystal.site.Graphene
+import org.isk.molekule.gen.lattice.crystal.usingCrystal
 import org.isk.molekule.gen.lattice.spanInAllDirections
-import org.isk.molekule.gen.lattice.unit.bravis.Bravais
-import org.isk.molekule.gen.lattice.usingUnitCell
-import org.isk.molekule.gen.utils.removeDuplicates
 import org.isk.molekule.gen.utils.toRad
-import kotlin.math.PI
 
 
 fun main() {
+
     val env = Environment()
 
-    val shape = Box(-30 to 20, -20 to 20, -20 to 20)
+    val boxLen = -100 to 100
+    val shape = Box(boxLen, boxLen, boxLen) - Tube(Point(-101,0,0), Point(101,0,0), 30)
 
-
-    Grid3D(100, 100, 100)
+    Grid3D(30, 30, 30)
         .points
         .spanInAllDirections()
-        .usingUnitCell(Bravais.dim3.orthorhombicFaceCentered(5.0, 5.0, 5.0))
-        .removeDuplicates()
+        .usingCrystal(Crystal.famous.diamond(40.0))
         .filter { it isInside shape }
         .map {
             atomOf(AtomicMass.C, it)
@@ -34,7 +34,7 @@ fun main() {
         }
 
     env.createVMD()
-        .vdm(0.1)
+        .dynamicBonds(cutOff = 40.0, size = 1.0)
         .run()
         .waitUntilExit()
 }

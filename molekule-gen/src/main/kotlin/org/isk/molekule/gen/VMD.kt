@@ -60,8 +60,25 @@ class VMD {
         return this
 
     }
+
     fun vdm(size: Double = 1.0): VMD {
+        addCommand("mol delrep 0 0")
+        addCommand("mol color Type")
+        addCommand("mol representation VDW $size 15.000000")
+        addCommand("mol selection all")
+        addCommand("mol material Opaque")
+        addCommand("mol modrep 0 0")
         addCommand("mol modstyle 0 0 VDW $size 15.000000")
+        return this
+    }
+
+    fun dynamicBonds(size: Double = 0.5, cutOff: Double = 1.6): VMD {
+        addCommand("mol delrep 0 0")
+        addCommand("mol color Type")
+        addCommand("mol representation DynamicBonds $cutOff $size 12.000000")
+        addCommand("mol selection all")
+        addCommand("mol material Opaque")
+        addCommand("mol addrep 0")
         return this
     }
 
@@ -76,11 +93,7 @@ fun Environment.createVMD(rescale: Double = 0.1): VMD {
         val outputFile = File.createTempFile("molkul-", ".lammpstrj")
         toLammpsDumpFile(outputFile.path, rescale = rescale)
         it.setPreCommand(outputFile.path)
-        it.addCommand("mol color Type")
-        it.addCommand("mol representation VDW 0.700000 15.000000")
-        it.addCommand("mol selection all")
-        it.addCommand("mol material Opaque")
-        it.addCommand("mol modrep 0 0")
+        it.vdm()
         outputFile.deleteOnExit()
     }
 }

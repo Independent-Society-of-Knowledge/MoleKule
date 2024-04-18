@@ -33,7 +33,6 @@ fun Sequence<Point>.spanInAllDirections(): Sequence<Point> =
             if (z != 0.0 && y != 0.0 && x != 0.0)
                 reflected.add(copy(z = -z, y = -y, x = -x))
 
-
             reflected
         }
     }

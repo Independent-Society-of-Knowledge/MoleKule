@@ -6,12 +6,14 @@ import org.isk.molekule.gen.atom.coefficient.BondCoefficient
 import org.isk.molekule.gen.atom.coefficient.Coefficient
 import org.isk.molekule.gen.atom.coefficient.DihedralCoefficient
 import org.isk.molekule.gen.geomertry.Box
+import java.util.Collections
 import java.util.LinkedHashSet
+import java.util.concurrent.ConcurrentSkipListSet
 
 class Environment {
 
 
-    val entities: MutableSet<Trackable> = LinkedHashSet()
+    val entities: MutableSet<Trackable> = mutableSetOf()
 
     val atoms: List<Atom>
         get() = entities.filterIsInstance<Atom>()
@@ -82,6 +84,10 @@ class Environment {
         }
 
     fun add(vararg entityGenerator: EntityGenerator) {
+        entities.addAll(entityGenerator.flatMap { it.generate().asSequence() })
+    }
+
+    fun add( entityGenerator: List<EntityGenerator>) {
         entities.addAll(entityGenerator.flatMap { it.generate().asSequence() })
     }
 
