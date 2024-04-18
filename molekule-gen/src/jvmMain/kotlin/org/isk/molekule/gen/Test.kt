@@ -5,13 +5,10 @@ import org.isk.molekule.gen.geomertry.Box
 import org.isk.molekule.gen.geomertry.Tube
 import org.isk.molekule.gen.geomertry.isInside
 import org.isk.molekule.gen.geomertry.point.Point
-import org.isk.molekule.gen.lattice.Grid2D
 import org.isk.molekule.gen.lattice.Grid3D
 import org.isk.molekule.gen.lattice.crystal.Crystal
-import org.isk.molekule.gen.lattice.crystal.site.Graphene
 import org.isk.molekule.gen.lattice.crystal.usingCrystal
 import org.isk.molekule.gen.lattice.spanInAllDirections
-import org.isk.molekule.gen.utils.toRad
 
 
 fun main() {

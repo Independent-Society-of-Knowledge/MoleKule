@@ -8,7 +8,6 @@ import java.io.FileOutputStream
 
 class VMD {
     init {
-
         val res = if (SystemUtils.IS_OS_UNIX) {
             val check = Runtime.getRuntime().exec("whereis vmd")
             check.waitFor()
