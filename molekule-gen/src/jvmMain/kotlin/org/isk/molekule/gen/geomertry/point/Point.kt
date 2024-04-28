@@ -71,6 +71,11 @@ data class Point(
 
     companion object {
         val origin: Point = Point(0, 0, 0)
+
+        val xHat = Point(1.0, 0.0, 0.0)
+        val yHat = Point(0.0, 1.0, 0.0)
+        val zHat = Point(0.0, 0.0, 1.0)
+
         val randomOrientation: Point
             get() = Point(
                 Random.nextDouble(-1.0, 1.0),
