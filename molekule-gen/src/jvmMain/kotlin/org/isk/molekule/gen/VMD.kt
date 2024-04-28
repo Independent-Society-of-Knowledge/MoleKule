@@ -11,7 +11,7 @@ class VMD {
         val res = if (SystemUtils.IS_OS_UNIX) {
             val check = Runtime.getRuntime().exec("whereis vmd")
             check.waitFor()
-            check.inputStream.readAllBytes().decodeToString().replace("vmd:", "").isNotEmpty()
+            check.inputStream.readAllBytes().decodeToString().trim().replace("vmd:", "").isNotEmpty()
         } else if (SystemUtils.IS_OS_WINDOWS) {
             val check = Runtime.getRuntime().exec("where vmd")
             check.waitFor()
