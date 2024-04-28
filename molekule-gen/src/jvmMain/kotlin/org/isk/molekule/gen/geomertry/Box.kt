@@ -39,6 +39,13 @@ data class Box(
         get() = zBoundary.second.toDouble()
 
 
+    /**
+     * vector which represents lowest point of (left most inner bottom point) (xlow, ylow, zlow)
+     */
+    val edge: Point
+        get() = Point(xLow, yLow, zLow)
+
+
     init {
         if (xLow > xHigh)
             throw IllegalArgumentException("x boundary is not valid: $xBoundary should from low to high and not equal")
