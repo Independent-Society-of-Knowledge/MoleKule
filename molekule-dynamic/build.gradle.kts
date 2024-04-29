@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation(project(":molekule-core"))
+    implementation(project(":molekule-gen"))
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
