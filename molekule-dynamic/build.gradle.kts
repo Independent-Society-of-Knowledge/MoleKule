@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     implementation(project(":molekule-core"))
-    implementation(project(":molekule-gen"))
+    implementation(project(":molekule-bind"))
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 

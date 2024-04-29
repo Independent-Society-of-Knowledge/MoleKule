@@ -1,7 +1,7 @@
 package org.isk.molekule.dynamic.watcher
 
 import org.isk.molekule.dynamic.Simulation
-import org.isk.molekule.gen.plus
+import org.isk.molekule.bind.plus
 import java.io.File
 import java.io.FileOutputStream
 

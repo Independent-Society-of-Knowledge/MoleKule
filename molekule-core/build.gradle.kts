@@ -21,7 +21,7 @@ publishing {
 
 
 kotlin {
-    withSourcesJar()
+    withSourcesJar(true)
     jvm()
     js()
     jvmToolchain(21)

@@ -1,4 +1,4 @@
-package org.isk.molekule.gen.lammps
+package org.isk.molekule.bind.lammps
 
 import org.apache.velocity.Template
 import org.apache.velocity.VelocityContext

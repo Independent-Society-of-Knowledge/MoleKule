@@ -1,8 +1,8 @@
-package org.isk.molekule.gen.lammps
+package org.isk.molekule.bind.lammps
 
 import org.isk.molekule.core.Environment
 import org.isk.molekule.core.atom.ChargedAtom
-import org.isk.molekule.gen.plus
+import org.isk.molekule.bind.plus
 import java.io.File
 import java.io.FileOutputStream
 

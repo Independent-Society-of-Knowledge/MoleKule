@@ -1,4 +1,4 @@
-package org.isk.molekule.gen
+package org.isk.molekule.bind
 
 import java.io.OutputStream
 
