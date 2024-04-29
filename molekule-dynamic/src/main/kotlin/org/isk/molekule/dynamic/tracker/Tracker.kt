@@ -1,6 +1,6 @@
 package org.isk.molekule.dynamic.tracker
 
-import org.isk.molekule.gen.atom.*
+import org.isk.molekule.core.atom.*
 
 
 

@@ -13,5 +13,6 @@ plugins {
 }
 
 rootProject.name = "molekule"
-include("molekule-gen")
+include("molekule-core")
 include("molekule-dynamic")
+include("molekule-gen")

@@ -9,10 +9,10 @@ import org.isk.molekule.dynamic.watcher.BoundaryCondition
 import org.isk.molekule.dynamic.watcher.BoundaryType.*
 import org.isk.molekule.dynamic.watcher.Dumper
 import org.isk.molekule.dynamic.watcher.TimeAwareWatcher
-import org.isk.molekule.gen.AtomicMass
-import org.isk.molekule.gen.Environment
-import org.isk.molekule.gen.atom.Atom
-import org.isk.molekule.gen.geomertry.point.Point
+import org.isk.molekule.core.AtomicMass
+import org.isk.molekule.core.Environment
+import org.isk.molekule.core.atom.Atom
+import org.isk.molekule.core.geomertry.point.Point
 
 fun main() {
     val env = Environment()

@@ -8,9 +8,9 @@ import org.isk.molekule.dynamic.tracker.Tracker
 import org.isk.molekule.dynamic.watcher.BoundaryCondition
 import org.isk.molekule.dynamic.watcher.BoundaryType
 import org.isk.molekule.dynamic.watcher.Watcher
-import org.isk.molekule.gen.Environment
-import org.isk.molekule.gen.geomertry.Box
-import org.isk.molekule.gen.geomertry.point.Point
+import org.isk.molekule.core.Environment
+import org.isk.molekule.core.geomertry.Box
+import org.isk.molekule.core.geomertry.point.Point
 import java.util.concurrent.Executors
 import kotlin.math.max
 

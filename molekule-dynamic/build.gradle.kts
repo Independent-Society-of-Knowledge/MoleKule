@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":molekule-gen"))
+    implementation(project(":molekule-core"))
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 

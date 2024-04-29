@@ -3,9 +3,9 @@ package org.isk.molekule.dynamic.tracker
 import org.isk.molekule.dynamic.PhaseSpacePoint
 import org.isk.molekule.dynamic.Simulation
 import org.isk.molekule.dynamic.watcher.Watcher
-import org.isk.molekule.gen.atom.Atom
-import org.isk.molekule.gen.atom.Trackable
-import org.isk.molekule.gen.geomertry.point.Point
+import org.isk.molekule.core.atom.Atom
+import org.isk.molekule.core.atom.Trackable
+import org.isk.molekule.core.geomertry.point.Point
 
 class NeighborListTracker(
     val systemLength: Double,

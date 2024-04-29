@@ -26,7 +26,10 @@ kotlin {
     jvmToolchain(21)
 
 
-    sourceSets{
+    sourceSets {
+        commonMain.dependencies {
+            implementation(project(":molekule-core"))
+        }
         jvmMain.dependencies {
             dependencies {
                 api("org.apache.commons:commons-lang3:3.14.0")

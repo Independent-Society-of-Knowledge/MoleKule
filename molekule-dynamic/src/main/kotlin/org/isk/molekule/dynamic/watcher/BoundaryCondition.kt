@@ -1,7 +1,7 @@
 package org.isk.molekule.dynamic.watcher
 
 import org.isk.molekule.dynamic.Simulation
-import org.isk.molekule.gen.utils.outside
+import org.isk.molekule.core.utils.outside
 import kotlin.math.absoluteValue
 
 enum class BoundaryType {
