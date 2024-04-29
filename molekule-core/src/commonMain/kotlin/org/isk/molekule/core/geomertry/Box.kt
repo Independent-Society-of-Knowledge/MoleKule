@@ -45,6 +45,9 @@ data class Box(
     val edge: Point
         get() = Point(xLow, yLow, zLow)
 
+    val middle: Point
+        get() = (edge + Point(xHigh, yHigh, zHigh)) * 0.5
+
 
     init {
         if (xLow > xHigh)
