@@ -27,11 +27,11 @@ kotlin {
     jvm {
         jvmToolchain(21)
     }
-    js {
-        nodejs()
-        js()
-    }
-    jvmToolchain(21)
+//    js {
+//        nodejs()
+//        js()
+//    }
+//    jvmToolchain(21)
     sourceSets {
         commonMain {
             dependencies {

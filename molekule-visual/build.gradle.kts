@@ -31,15 +31,15 @@ kotlin {
     jvm {
         jvmToolchain(21)
     }
-    js(IR) {
-        binaries.executable()
-        browser {
-            @OptIn(ExperimentalDistributionDsl::class)
-            distribution {
-                outputDirectory.set(File("${rootDir}/dist/js"))
-            }
-        }
-    }
+//    js(IR) {
+//        binaries.executable()
+//        browser {
+//            @OptIn(ExperimentalDistributionDsl::class)
+//            distribution {
+//                outputDirectory.set(File("${rootDir}/dist/js"))
+//            }
+//        }
+//    }
 
     sourceSets {
         commonMain.dependencies {
@@ -68,10 +68,10 @@ kotlin {
             }
         }
 
-        val jsMain by getting {
-            dependencies {
-                // add additional js-specific dependencies here...
-            }
-        }
+//        val jsMain by getting {
+//            dependencies {
+//                // add additional js-specific dependencies here...
+//            }
+//        }
     }
 }
