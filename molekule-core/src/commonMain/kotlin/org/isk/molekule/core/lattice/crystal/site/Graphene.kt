@@ -11,7 +11,7 @@ object Graphene {
         val cell = VectorBasedUnitCell(
             Point(latticeConstant, 0, 0) + Point(latticeConstant, 0, 0).rotateZ(60.toRad()),
             Point(latticeConstant, 0, 0) + Point(latticeConstant, 0, 0).rotateZ((-60).toRad()),
-            Point.origin
+            Point.zHat
         )
         return object : SiteBasedCrystal(cell) {
             override fun generate(basePoint: Point): List<Point> =
@@ -23,7 +23,7 @@ object Graphene {
         val cell = VectorBasedUnitCell(
             Point(latticeConstant * sqrt(3.0), 0, 0),
             Point(latticeConstant * sqrt(3.0), 0, 0).rotateZ(120.toRad()),
-            Point.origin
+            Point.zHat
         )
         return object : SiteBasedCrystal(cell) {
             override fun generate(basePoint: Point): List<Point> {

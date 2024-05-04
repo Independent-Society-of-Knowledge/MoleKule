@@ -1,14 +1,17 @@
 package org.isk.molekule.visual.plugins
 
+import de.fabmax.kool.scene.addColorMesh
 import de.fabmax.kool.scene.addLineMesh
 import de.fabmax.kool.util.Color
 import org.isk.molekule.core.Environment
 import org.isk.molekule.core.geomertry.Box
 import org.isk.molekule.core.geomertry.point.Point
+import org.isk.molekule.core.geomertry.point.length
 import org.isk.molekule.visual.KoolVisualizer
 import org.isk.molekule.visual.utils.vec3
 
-class BoxViewerPlugin(val box: Box, val color: Color = Color.WHITE) : KoolVizualizerPlugin {
+class BoxViewerPlugin(val box: Box, val color: Color = Color.WHITE, showPlanes: Boolean = false) :
+    KoolVizualizerPlugin {
     override fun initialize(koolVisualizer: KoolVisualizer) {
         val points = with(box) {
             listOf(

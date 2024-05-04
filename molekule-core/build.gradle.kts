@@ -5,9 +5,11 @@ plugins {
 
 group = "org.isk"
 version = "1.0.0"
+val kmath_version = "0.3.1"
 
 repositories {
     mavenCentral()
+    maven("https://maven.pkg.jetbrains.space/mipt-npm/p/sci/maven")
 }
 
 
@@ -30,5 +32,12 @@ kotlin {
         js()
     }
     jvmToolchain(21)
+    sourceSets {
+        commonMain {
+            dependencies {
+                api("space.kscience:kmath-core:${kmath_version}")
+            }
+        }
+    }
 
 }

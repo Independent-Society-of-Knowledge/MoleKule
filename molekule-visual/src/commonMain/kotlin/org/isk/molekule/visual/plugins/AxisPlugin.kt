@@ -8,20 +8,26 @@ import org.isk.molekule.core.Environment
 import org.isk.molekule.core.geomertry.point.length
 import org.isk.molekule.visual.KoolVisualizer
 
-class AxisPlugin(val radius: Float = 0.5f) : KoolVizualizerPlugin {
+class AxisPlugin(
+    private val radius: Float = 0.5f,
+    val relativeSizeMultiplier: Float = 1.0f,
+    val sizeOverride: Float? = null
+) : KoolVizualizerPlugin {
     override fun initialize(koolVisualizer: KoolVisualizer) {
 
     }
 
     override fun addEnvironment(koolVisualizer: KoolVisualizer, environment: Environment) {
-        val height_ = with(environment.enclosingBox) { listOf(xBoundary.length, yBoundary.length, zBoundary.length) }
-            .min().toFloat()/2.0f
+        val height_ = sizeOverride ?: run {
+            with(environment.enclosingBox) { listOf(xBoundary.length, yBoundary.length, zBoundary.length) }
+                .min().toFloat() * relativeSizeMultiplier / 2.0f
+        }
         koolVisualizer.scene.addColorMesh {
             generate {
                 cylinder {
                     height = height_
-                    topRadius = radius
-                    bottomRadius = radius
+                    topRadius = this@AxisPlugin.radius
+                    bottomRadius = this@AxisPlugin.radius
                     topFill = true
                     bottomFill = true
                     color = Color.GREEN
@@ -34,8 +40,8 @@ class AxisPlugin(val radius: Float = 0.5f) : KoolVizualizerPlugin {
             generate {
                 cylinder {
                     height = height_
-                    topRadius = radius
-                    bottomRadius = radius
+                    topRadius = this@AxisPlugin.radius
+                    bottomRadius = this@AxisPlugin.radius
                     topFill = true
                     bottomFill = true
                     color = Color.BLUE
@@ -49,8 +55,8 @@ class AxisPlugin(val radius: Float = 0.5f) : KoolVizualizerPlugin {
             generate {
                 cylinder {
                     height = height_
-                    topRadius = radius
-                    bottomRadius = radius
+                    topRadius = this@AxisPlugin.radius
+                    bottomRadius = this@AxisPlugin.radius
                     topFill = true
                     bottomFill = true
                     color = Color.RED

@@ -19,7 +19,7 @@ object Bravais2D {
         return VectorBasedUnitCell(
             Point(a, 0, 0),
             Point(b * cos(theta), b * sin(theta), 0),
-            Point(0, 0, 0),
+            Point.zHat,
         )
     }
 

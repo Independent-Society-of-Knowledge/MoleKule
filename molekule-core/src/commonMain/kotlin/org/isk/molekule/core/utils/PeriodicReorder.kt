@@ -33,6 +33,6 @@ fun Sequence<Point>.periodicReorder(box: Box, removeEscapedPoints: Boolean = fal
 
 
 
-        return@mapNotNull Point(abs(point.x % lx), abs(point.y % ly), abs(point.z % lz)) + edgeVector
+        return@mapNotNull Point(point.x.mod(lx), point.y.mod(ly), point.z.mod(lz)) + edgeVector
     }
 }

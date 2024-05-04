@@ -36,9 +36,10 @@ class EnvironmentMainPlugin : KoolVizualizerPlugin {
             scene.addColorMesh {
                 generate {
                     withColor(colorOfAtom(atom)) {
-                        icoSphere {
+                        uvSphere {
                             this.radius = radiusOfAtom(atom)
                             this.center.set(atom.position.vec3)
+                            this.steps = 2
                         }
                     }
                 }

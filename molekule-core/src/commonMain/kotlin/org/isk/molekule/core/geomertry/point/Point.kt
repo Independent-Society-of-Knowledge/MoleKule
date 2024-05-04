@@ -1,6 +1,10 @@
 package org.isk.molekule.core.geomertry.point
 
 import org.isk.molekule.core.geomertry.Distanceable
+import space.kscience.kmath.UnstableKMathAPI
+import space.kscience.kmath.linear.DoubleLinearSpace
+import space.kscience.kmath.linear.vector
+import space.kscience.kmath.structures.DoubleBuffer
 import kotlin.math.*
 import kotlin.random.Random
 
@@ -33,7 +37,7 @@ data class Point(
     /**
      * radians
      */
-    infix fun angle(other: Point): Double = acos((this dot other) / (norm * other.norm))
+    infix fun angle(other: Point): Double = acos((this dot other) / (norm * other.norm)) % (PI / 2.0)
 
     val norm2
         get() = this dot this
@@ -68,6 +72,11 @@ data class Point(
     }
 
     fun normalize() = this / norm
+
+    operator fun unaryMinus(): Point = Point(-x, -y, -z)
+
+    val km_vector
+        get() = DoubleBuffer(x,y,z)
 
     companion object {
         val origin: Point = Point(0, 0, 0)
