@@ -36,6 +36,9 @@ We welcome contributions from the community to enhance Molekule and make it even
 
 ## Support and Contact
 
-If you have any questions, suggestions, or need further assistance, please reach out to us  by sending an email to [support@isk.org](mailto:projects@iskportal.com).
+If you have any questions, suggestions, or need further assistance, please reach out to us  by sending an email to [projects@iskportal.com](mailto:projects@iskportal.com).
 
 Join the Molekule community and let's collaborate to push the boundaries of Molecular Dynamics and Density Functional Theory simulations!
+
+## About Independent Society of Knowledge
+You can find out more about Independent Society of Knowledge and its projects at [iskportal.com](https://iskportal.com)
