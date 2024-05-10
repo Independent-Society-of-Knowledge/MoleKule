@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":molekule-core"))
-    implementation(project(":molekule-bind"))
+    api(project(":molekule-core"))
+    api(project(":molekule-bind"))
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 

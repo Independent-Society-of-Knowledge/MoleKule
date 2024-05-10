@@ -28,7 +28,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":molekule-core"))
+            api(project(":molekule-core"))
         }
         jvmMain.dependencies {
             dependencies {

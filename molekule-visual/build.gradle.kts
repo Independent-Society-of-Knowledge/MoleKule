@@ -43,12 +43,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":molekule-core"))
+            api(project(":molekule-core"))
 
-            implementation("de.fabmax.kool:kool-core:$koolVersion")
-            implementation("de.fabmax.kool:kool-physics:$koolVersion")
+            api("de.fabmax.kool:kool-core:$koolVersion")
+            api("de.fabmax.kool:kool-physics:$koolVersion")
 
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+            api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
         }
         val jvmMain by getting {
             dependencies {
