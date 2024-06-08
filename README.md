@@ -1,4 +1,4 @@
-![Molekule Cover](https://github.com/Independent-Society-of-Knowledge/MoleKule/assets/76442288/3e2fc4b8-fa80-4bc3-afc6-216e575c13b7)
+![Uploading image.png…]()
 
 # Molekule: Molecular Dynamics Toolkit
 
