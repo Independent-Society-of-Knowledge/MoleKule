@@ -1,4 +1,4 @@
-![Uploading image.png…]()
+![image](https://github.com/Independent-Society-of-Knowledge/MoleKule/assets/76442288/704e27e7-dfc8-4f63-a603-6f72115de80c)
 
 # Molekule: Molecular Dynamics Toolkit
 
